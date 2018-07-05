@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:slimWallet"
+    x:Class="slimWallet.CardsView"
+    Title="SlimWallet">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Icon="add.png"
+            Command="{Binding AddCommand}" />
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <ListView
+            ItemsSource="{Binding Cards}">
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ImageCell
+                        ImageSource="{Binding Front}" />
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </ContentPage.Content>
+
+</ContentPage>
