@@ -100,6 +100,12 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\wallet.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\wallet.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\wallet.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\wallet.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\wallet.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\wallet.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -107,6 +113,8 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-ldpi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\slimWallet\slimWallet.csproj">

@@ -32,6 +32,8 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>slimWallet</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
