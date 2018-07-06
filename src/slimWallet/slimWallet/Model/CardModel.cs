@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using slimWallet.Contracts;
 
-namespace slimWallet
+namespace slimWallet.Model
 {
     public class CardModel
     {

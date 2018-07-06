@@ -1,4 +1,4 @@
-﻿namespace slimWallet
+﻿namespace slimWallet.Contracts
 {
     public class Card
     {

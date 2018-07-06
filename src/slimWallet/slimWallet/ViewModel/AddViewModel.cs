@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using slimWallet.Base;
+using Xamarin.Forms;
 
 namespace slimWallet.ViewModel
 {

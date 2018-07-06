@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using slimWallet.Base;
+using slimWallet.Contracts;
+using slimWallet.Model;
 using slimWallet.View;
 using Xamarin.Forms;
 
