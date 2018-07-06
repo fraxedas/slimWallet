@@ -2,7 +2,7 @@
 
 namespace slimWallet
 {
-    class CardModel
+    public class CardModel
     {
         public CardModel()
         {

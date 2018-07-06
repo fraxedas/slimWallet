@@ -8,7 +8,7 @@ namespace slimWallet
         {
             InitializeComponent();
 
-            BindingContext = new CardsViewModel();
+            BindingContext = new CardsViewModel(Navigation);
         }
     }
 }

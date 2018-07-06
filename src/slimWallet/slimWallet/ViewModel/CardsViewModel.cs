@@ -1,43 +1,48 @@
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using slimWallet.View;
 using Xamarin.Forms;
 
 namespace slimWallet
 {
-    public class CardsViewModel
+
+    public class CardsViewModel : BaseViewModel
     {
         CardModel _model;
+        List<Card> _cards;
 
-        public CardsViewModel()
+        public CardsViewModel(INavigation navigation): base(navigation)
         {
-            _model = new CardModel();
-            _cards = _model.List();
+            Model = new CardModel();
+            _cards = Model.List();
+            AddCommand = new Command(async () =>  await Add());
         }
 
-        List<Card> _cards;
+        private async Task Add()
+        {
+            await Navigation.PushAsync(new AddView());
+        }
+
+        public ICommand AddCommand { get; }
 
         public List<Card> Cards
         {
-            get
-            {
-                return _cards;
-            }
-
+            get => _cards;
             set
             {
                 _cards = value;
+                RaisePropertyChanged();
             }
         }
 
-        public ICommand AddCommand
+        public CardModel Model
         {
-            get
+            get => _model;
+            set
             {
-                return new Command(() =>
-                {
-                    throw new NotImplementedException();
-                });
+                _model = value;
+                RaisePropertyChanged();
             }
         }
     }
