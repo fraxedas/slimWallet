@@ -1,8 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using slimWallet.Base;
 
 namespace slimWallet
 {
-    public partial class CardsView : ContentPage
+    public partial class CardsView : BaseView
     {
         public CardsView()
         {

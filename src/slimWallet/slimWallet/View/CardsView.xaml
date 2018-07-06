@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage
+<base:BaseView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:slimWallet"
+    xmlns:base="clr-namespace:slimWallet.Base;assembly=slimWallet"
     x:Class="slimWallet.CardsView"
     Title="SlimWallet">
 
@@ -34,4 +34,4 @@
 
     </ContentPage.Content>
 
-</ContentPage>
+</base:BaseView>

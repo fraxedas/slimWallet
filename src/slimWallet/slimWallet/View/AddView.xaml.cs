@@ -1,9 +1,10 @@
-﻿using slimWallet.ViewModel;
+﻿using slimWallet.Base;
+using slimWallet.ViewModel;
 using Xamarin.Forms;
 
 namespace slimWallet.View
 {
-    public partial class AddView : ContentPage
+    public partial class AddView : BaseView
     {
         public AddView()
         {
