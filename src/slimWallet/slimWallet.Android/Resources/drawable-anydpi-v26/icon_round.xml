@@ -7,6 +7,6 @@
         android:drawable="@color/launcher_background" />
 
     <foreground
-        android:drawable="@mipmap/launcher_foreground" />
+        android:drawable="@drawable/wallet" />
 
 </adaptive-icon>
