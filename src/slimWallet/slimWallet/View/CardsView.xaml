@@ -20,7 +20,10 @@
             ItemsSource="{Binding Model.List}"
             SelectionMode="None"
             IsPullToRefreshEnabled="false"
-            ItemTapped="Handle_ItemTapped">
+            ItemTapped="Handle_ItemTapped"
+            RowHeight="100"
+            SeparatorVisibility="None">
+       
 
             <ListView.ItemTemplate>
 
