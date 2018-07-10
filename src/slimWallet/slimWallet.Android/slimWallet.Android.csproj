@@ -112,6 +112,24 @@
     <AndroidResource Include="Resources\drawable-mdpi\add.png" />
     <AndroidResource Include="Resources\drawable-ldpi\add.png" />
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\front.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\front.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\front.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\front.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\front.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\front.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\save.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\save.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

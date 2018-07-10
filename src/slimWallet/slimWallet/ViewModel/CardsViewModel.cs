@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using slimWallet.Base;
@@ -13,31 +13,28 @@ namespace slimWallet
     public class CardsViewModel : BaseViewModel
     {
         CardModel _model;
-        List<Card> _cards;
 
         public CardsViewModel(INavigation navigation): base(navigation)
         {
-            Model = new CardModel();
-            _cards = Model.List();
-            AddCommand = new Command(async () =>  await Add());
+            Model = CardModel.Current;
+            AddCommand = new Command(async () => await Add());
+            SelectCommand = new Command<Card>(async card => await Select(card));
+        }
+
+        private async Task Select(Card card)
+        {
+            Model.Selected = card;
+            await Navigation.PushAsync(new AddView());
         }
 
         private async Task Add()
         {
+            Model.Selected = new Card();
             await Navigation.PushAsync(new AddView());
         }
 
         public ICommand AddCommand { get; }
-
-        public List<Card> Cards
-        {
-            get => _cards;
-            set
-            {
-                _cards = value;
-                RaisePropertyChanged();
-            }
-        }
+        public ICommand SelectCommand { get; }
 
         public CardModel Model
         {

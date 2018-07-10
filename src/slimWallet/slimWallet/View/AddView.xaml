@@ -6,10 +6,41 @@
     xmlns:base="clr-namespace:slimWallet.Base;assembly=slimWallet"
     x:Class="slimWallet.View.AddView">
 
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem
+            Icon="front.png"
+            Command="{Binding FrontCommand}" />
+
+        <ToolbarItem
+            Icon="back.png"
+            Command="{Binding BackCommand}" />
+
+        <ToolbarItem
+            Icon="save.png"
+            Command="{Binding SaveCommand}" />
+
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
 
-        <Image
-            Source="{Binding Image}" />
+        <ScrollView>
+
+            <StackLayout Spacing="10">
+
+                <Entry
+                    Placeholder = "Card name"
+                    Text="{Binding Model.Selected.Name, Mode=TwoWay}" />
+                
+                <Image
+                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay}" />
+
+                <Image
+                    Source="{Binding Model.Selected.BackImage, Mode=OneWay}" />
+
+            </StackLayout>
+
+        </ScrollView>
 
     </ContentPage.Content>
 

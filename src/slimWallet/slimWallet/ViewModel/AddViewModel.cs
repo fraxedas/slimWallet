@@ -3,24 +3,41 @@ using System.Threading.Tasks;
 using Plugin.Media;
 using slimWallet.Base;
 using Xamarin.Forms;
+using System.Windows.Input;
+using slimWallet.Model;
 
 namespace slimWallet.ViewModel
 {
     public class AddViewModel : BaseViewModel
     {
-        private ImageSource _image;
+        private CardModel _model { get; set; }
 
         public AddViewModel(INavigation navigation) : base(navigation)
         {
-
+            Model = CardModel.Current;
         }
 
-        public ImageSource Image { get => _image; set { _image = value; RaisePropertyChanged(); } }
+        public ICommand FrontCommand => new Command(async () => await TakePhoto(true));
 
-        public override async Task OnAppearing()
+        public ICommand BackCommand => new Command(async () => await TakePhoto(false));
+
+        public ICommand SaveCommand => new Command(async () => {
+            Model.Save(Model.Selected);
+            await Navigation.PopAsync();
+        });
+
+        public CardModel Model
         {
-            await base.OnAppearing();
+            get => _model;
+            set
+            {
+                _model = value;
+                RaisePropertyChanged();
+            }
+        }
 
+        public async Task TakePhoto(bool front)
+        {
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -37,11 +54,14 @@ namespace slimWallet.ViewModel
             if (file == null)
                 return;
 
-            Image = ImageSource.FromStream(() =>
+            var source = ImageSource.FromStream(() =>
             {
                 var stream = file.GetStream();
                 return stream;
             });
+
+            if (front) Model.Selected.FrontImage = source;
+            else Model.Selected.BackImage = source;
         }
     }
 }

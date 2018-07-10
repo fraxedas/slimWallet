@@ -17,14 +17,18 @@
     <ContentPage.Content>
 
         <ListView
-            ItemsSource="{Binding Cards}">
+            ItemsSource="{Binding Model.List}"
+            SelectionMode="None"
+            IsPullToRefreshEnabled="false"
+            ItemTapped="Handle_ItemTapped">
 
             <ListView.ItemTemplate>
 
                 <DataTemplate>
 
                     <ImageCell
-                        ImageSource="{Binding Front}" />
+                        Text = "{Binding Name}"
+                        ImageSource="{Binding FrontImage}" />
 
                 </DataTemplate>
 

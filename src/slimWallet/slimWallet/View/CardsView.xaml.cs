@@ -1,4 +1,6 @@
 ﻿using slimWallet.Base;
+using Xamarin.Forms;
+using System;
 
 namespace slimWallet
 {
@@ -9,6 +11,11 @@ namespace slimWallet
             InitializeComponent();
 
             BindingContext = new CardsViewModel(Navigation);
+        }
+
+        public void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if(BindingContext is CardsViewModel viewModel) viewModel.SelectCommand.Execute(e.Item);
         }
     }
 }
