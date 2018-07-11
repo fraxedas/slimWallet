@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using slimWallet.Contracts;
+using slimWallet.Data;
 
 namespace slimWallet.Model
 {
@@ -14,11 +17,7 @@ namespace slimWallet.Model
 
         public ObservableCollection<Card> List
         {
-            get
-            {
-                return _list;
-            }
-
+            get => _list;
             set
             {
                 _list = value;
@@ -26,15 +25,13 @@ namespace slimWallet.Model
             }
         }
 
+        private readonly Database _database;
+        private readonly FileRepository _fileRepository;
         Card _selected;
 
         public Card Selected
         {
-            get
-            {
-                return _selected;
-            }
-
+            get => _selected;            
             set
             {
                 _selected = value;
@@ -44,19 +41,40 @@ namespace slimWallet.Model
 
         private CardModel()
         {
-            List = new ObservableCollection<Card>();
+            _database = new Database();
+            _fileRepository = new FileRepository();
+            List = new ObservableCollection<Card>(_database.GetItemsAsync().Result);
         }
 
-        public void Save(Card card)
+        public async Task SaveAsync(Card card)
         {
             if(!List.Contains(card))
                 List.Add(card);
+            await _database.SaveItemAsync(card);
         }
 
-        public void Remove(Card card)
+        public async Task RemoveAsync(Card card)
         {
             if (List.Contains(card)) 
                 List.Remove(card);
+            await _database.DeleteItemAsync(card);
+            await _fileRepository.DeleteAsync(card.FrontImage);
+            await _fileRepository.DeleteAsync(card.BackImage);
+        }
+
+        public async Task SaveFileAsync(Card selected, Stream stream, bool front)
+        {
+            var path = await _fileRepository.SaveAsync(stream);
+            stream.Dispose();
+
+            if (front) {
+                await _fileRepository.DeleteAsync(selected.FrontImage);
+                selected.FrontImage = path;
+            }
+            else {
+                await _fileRepository.DeleteAsync(selected.FrontImage);
+                selected.BackImage = path;
+            }
         }
     }
 }

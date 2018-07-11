@@ -22,7 +22,7 @@ namespace slimWallet.ViewModel
         public ICommand BackCommand => new Command(async () => await TakePhoto(false));
 
         public ICommand SaveCommand => new Command(async () => {
-            Model.Save(Model.Selected);
+            await Model.SaveAsync(Model.Selected);
             await Navigation.PopAsync();
         });
 
@@ -54,14 +54,7 @@ namespace slimWallet.ViewModel
             if (file == null)
                 return;
 
-            var source = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                return stream;
-            });
-
-            if (front) Model.Selected.FrontImage = source;
-            else Model.Selected.BackImage = source;
+            await _model.SaveFileAsync(Model.Selected, file.GetStream(), front);
         }
     }
 }
