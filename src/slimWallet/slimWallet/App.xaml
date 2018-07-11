@@ -1,11 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Application
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="slimWallet.App">
+    x:Class="slimWallet.App" 
+    xmlns:local="clr-namespace:slimWallet.Converter">
 
     <Application.Resources>
+        <ResourceDictionary>
+            <local:ImageSourceConverter x:Key="ImageSource" />
+        </ResourceDictionary>
     </Application.Resources>
 
 </Application>

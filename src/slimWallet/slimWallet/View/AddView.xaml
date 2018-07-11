@@ -33,10 +33,10 @@
                     Text="{Binding Model.Selected.Name, Mode=TwoWay}" />
                 
                 <Image
-                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay}" />
+                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay, Converter={StaticResource ImageSource}}" />
 
                 <Image
-                    Source="{Binding Model.Selected.BackImage, Mode=OneWay}" />
+                    Source="{Binding Model.Selected.BackImage, Mode=OneWay, Converter={StaticResource ImageSource}" />
 
             </StackLayout>
 

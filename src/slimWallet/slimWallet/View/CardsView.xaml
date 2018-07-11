@@ -31,7 +31,7 @@
 
                     <ImageCell
                         Text = "{Binding Name}"
-                        ImageSource="{Binding FrontImage}" />
+                        ImageSource="{Binding FrontImage, Converter={StaticResource ImageSource}}" />
 
                 </DataTemplate>
 

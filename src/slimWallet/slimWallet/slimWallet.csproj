@@ -19,5 +19,6 @@
     <Folder Include="Contracts\" />
     <Folder Include="Base\" />
     <Folder Include="Data\" />
+    <Folder Include="Converter\" />
   </ItemGroup>
 </Project>

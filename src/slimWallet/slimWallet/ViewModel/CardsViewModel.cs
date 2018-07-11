@@ -21,6 +21,12 @@ namespace slimWallet
             SelectCommand = new Command<Card>(async card => await Select(card));
         }
 
+        public override async Task OnAppearing()
+        {
+            await base.OnAppearing();
+            await Model.Init();
+        }
+
         private async Task Select(Card card)
         {
             Model.Selected = card;
