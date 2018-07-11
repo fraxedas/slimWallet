@@ -133,6 +133,12 @@
     <AndroidResource Include="Resources\drawable-hdpi\save.png" />
     <AndroidResource Include="Resources\drawable-mdpi\save.png" />
     <AndroidResource Include="Resources\drawable-ldpi\save.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\remove.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\remove.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\remove.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\remove.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\remove.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\remove.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

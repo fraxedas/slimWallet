@@ -20,6 +20,10 @@
             Icon="save.png"
             Command="{Binding SaveCommand}" />
 
+        <ToolbarItem
+            Icon="remove.png"
+            Command="{Binding RemoveCommand}"/>
+
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

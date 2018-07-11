@@ -21,6 +21,11 @@ namespace slimWallet.ViewModel
 
         public ICommand BackCommand => new Command(async () => await TakePhoto(false));
 
+        public ICommand RemoveCommand => new Command(async () => {
+            await Model.RemoveAsync(Model.Selected);
+            await Navigation.PopAsync();
+        });
+
         public ICommand SaveCommand => new Command(async () => {
             await Model.SaveAsync(Model.Selected);
             await Navigation.PopAsync();

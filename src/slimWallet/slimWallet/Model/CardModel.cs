@@ -28,6 +28,7 @@ namespace slimWallet.Model
 
         private readonly Database _database;
         private readonly FileRepository _fileRepository;
+
         Card _selected;
 
         public Card Selected
@@ -59,11 +60,13 @@ namespace slimWallet.Model
 
         public async Task RemoveAsync(Card card)
         {
-            if (List.Contains(card)) 
+            if (Selected == card)
+                Selected = null;
+            if (List.Contains(card))
                 List.Remove(card);
             await _database.DeleteItemAsync(card);
-            await _fileRepository.DeleteAsync(card.FrontImage);
-            await _fileRepository.DeleteAsync(card.BackImage);
+            if(card.FrontImage != null) await _fileRepository.DeleteAsync(card.FrontImage);
+            if (card.BackImage != null) await _fileRepository.DeleteAsync(card.BackImage);
         }
 
         public async Task<Stream> ReadAsync(string fileName) => await _fileRepository.ReadAsync(fileName);
