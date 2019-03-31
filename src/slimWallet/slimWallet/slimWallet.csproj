@@ -3,14 +3,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.7.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.7.0" />
-    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="0.8.0-preview" />
-    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.4.118" />
-    <PackageReference Include="PCLStorage" Version="1.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.14.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.14.0" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
@@ -18,7 +17,6 @@
     <Folder Include="Model\" />
     <Folder Include="Contracts\" />
     <Folder Include="Base\" />
-    <Folder Include="Data\" />
     <Folder Include="Converter\" />
   </ItemGroup>
 </Project>

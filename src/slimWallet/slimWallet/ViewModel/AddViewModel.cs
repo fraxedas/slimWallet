@@ -53,7 +53,8 @@ namespace slimWallet.ViewModel
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 Directory = "slimWallet",
-                Name = "test.jpg"
+                Name = "test.jpg",
+                AllowCropping = true
             });
 
             if (file == null)

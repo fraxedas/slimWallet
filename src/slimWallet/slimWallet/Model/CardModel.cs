@@ -65,23 +65,22 @@ namespace slimWallet.Model
             if (List.Contains(card))
                 List.Remove(card);
             await _database.DeleteItemAsync(card);
-            if(card.FrontImage != null) await _fileRepository.DeleteAsync(card.FrontImage);
-            if (card.BackImage != null) await _fileRepository.DeleteAsync(card.BackImage);
+            if(card.FrontImage != null) _fileRepository.Delete(card.FrontImage);
+            if (card.BackImage != null) _fileRepository.Delete(card.BackImage);
         }
 
-        public async Task<Stream> ReadAsync(string fileName) => await _fileRepository.ReadAsync(fileName);
+        public Stream Read(string fileName) => _fileRepository.Read(fileName);
 
         public async Task SaveFileAsync(Card selected, Stream stream, bool front)
         {
             var path = await _fileRepository.SaveAsync(stream);
-            stream.Dispose();
 
             if (front) {
-                if(selected.FrontImage != null) await _fileRepository.DeleteAsync(selected.FrontImage);
+                if(selected.FrontImage != null) _fileRepository.Delete(selected.FrontImage);
                 selected.FrontImage = path;
             }
             else {
-                if (selected.BackImage != null) await _fileRepository.DeleteAsync(selected.FrontImage);
+                if (selected.BackImage != null) _fileRepository.Delete(selected.BackImage);
                 selected.BackImage = path;
             }
         }

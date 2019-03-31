@@ -12,7 +12,7 @@ namespace slimWallet.Converter
             var fileName = value?.ToString();
             if (string.IsNullOrEmpty(fileName)) return null;
 
-            return ImageSource.FromStream(() => CardModel.Current.ReadAsync(fileName).Result);
+            return ImageSource.FromStream(() => CardModel.Current.Read(fileName));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,6 +1,5 @@
 ﻿using slimWallet.Base;
 using Xamarin.Forms;
-using System;
 
 namespace slimWallet
 {
