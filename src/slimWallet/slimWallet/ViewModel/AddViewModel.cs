@@ -4,6 +4,7 @@ using Plugin.Media;
 using slimWallet.Base;
 using Xamarin.Forms;
 using System.Windows.Input;
+using Plugin.Media.Abstractions;
 using slimWallet.Model;
 
 namespace slimWallet.ViewModel
@@ -54,7 +55,8 @@ namespace slimWallet.ViewModel
             {
                 Directory = "slimWallet",
                 Name = "test.jpg",
-                AllowCropping = true
+                AllowCropping = true,
+                PhotoSize = PhotoSize.Medium
             });
 
             if (file == null)

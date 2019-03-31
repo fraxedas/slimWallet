@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using Plugin.Media.Abstractions;
 using slimWallet.Contracts;
 using slimWallet.Data;
 
@@ -78,6 +79,8 @@ namespace slimWallet.Model
             if (front) {
                 if(selected.FrontImage != null) _fileRepository.Delete(selected.FrontImage);
                 selected.FrontImage = path;
+                if(selected.Thumbnail != null) _fileRepository.Delete(selected.Thumbnail);
+                selected.Thumbnail = path;
             }
             else {
                 if (selected.BackImage != null) _fileRepository.Delete(selected.BackImage);
