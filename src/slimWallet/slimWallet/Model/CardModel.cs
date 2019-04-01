@@ -15,7 +15,7 @@ namespace slimWallet.Model
 
         private static CardModel _current;
 
-        ObservableCollection<Card> _list;
+        private ObservableCollection<Card> _list;
 
         public ObservableCollection<Card> List
         {
@@ -29,8 +29,7 @@ namespace slimWallet.Model
 
         private readonly Database _database;
         private readonly FileRepository _fileRepository;
-
-        Card _selected;
+        private Card _selected;
 
         public Card Selected
         {

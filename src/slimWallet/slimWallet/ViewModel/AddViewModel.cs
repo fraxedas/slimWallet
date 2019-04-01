@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Plugin.Media;
 using slimWallet.Base;
@@ -46,23 +47,37 @@ namespace slimWallet.ViewModel
         {
             await CrossMedia.Current.Initialize();
 
+            var action = await Navigation.NavigationStack.Last()
+                .DisplayActionSheet("Select source", "Cancel", null, "Take photo", "Select from gallery");
+
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 throw new Exception(":( No camera available.");
             }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            MediaFile file = null;
+            if (action == "Take photo")
             {
-                Directory = "slimWallet",
-                Name = "test.jpg",
-                AllowCropping = true,
-                PhotoSize = PhotoSize.Medium
-            });
+                file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "slimWallet",
+                    Name = "test.jpg",
+                    AllowCropping = true,
+                    PhotoSize = PhotoSize.Medium
+                });
+            }
+            else if (action == "Select from gallery")
+            {
+                file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                {
+                    PhotoSize = PhotoSize.Medium
+                });
+            }
 
             if (file == null)
                 return;
 
-            await _model.SaveFileAsync(Model.Selected, file.GetStream(), front);
+            await _model.SaveFileAsync(Model.Selected, file.GetStreamWithImageRotatedForExternalStorage(), front);
         }
     }
 }

@@ -10,7 +10,8 @@ namespace slimWallet.Contracts
         private string _name;
         private string _thumbnail;
 
-        [PrimaryKey] [AutoIncrement] public int ID { get; internal set; }
+        [PrimaryKey] [AutoIncrement] 
+        public int ID { get; set; }
 
         public string Name
         {
