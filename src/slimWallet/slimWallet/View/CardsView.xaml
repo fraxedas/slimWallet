@@ -4,40 +4,47 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:slimWallet.Base;assembly=slimWallet"
+    xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="slimWallet.CardsView"
     Title="SlimWallet">
 
     <ContentPage.ToolbarItems>
 
         <ToolbarItem Icon="add.png"
-            Command="{Binding AddCommand}" />
+                     Command="{Binding AddCommand}" />
 
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
 
-        <ListView
-            ItemsSource="{Binding Model.List}"
-            SelectionMode="None"
-            IsPullToRefreshEnabled="false"
-            ItemTapped="Handle_ItemTapped"
-            RowHeight="100"
-            SeparatorVisibility="None">
-       
+        <StackLayout>
 
-            <ListView.ItemTemplate>
 
-                <DataTemplate>
+            <controls:FlowListView SeparatorVisibility="None" HasUnevenRows="true"
+                                   FlowColumnMinWidth="150" FlowItemsSource="{Binding Model.List}"
+                                   FlowItemTapped="Handle_ItemTapped">
 
-                    <ImageCell
-                        Text = "{Binding Name}"
-                        ImageSource="{Binding FrontImage, Converter={StaticResource ImageSource}}" />
+                <controls:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid Padding="3">
 
-                </DataTemplate>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-            </ListView.ItemTemplate>
+                            <Image HeightRequest="130" Aspect="AspectFill"
+                                   Source="{Binding FrontImage, Converter={StaticResource ImageSource}}" />
+                            
+                        </Grid>
+                    </DataTemplate>
+                </controls:FlowListView.FlowColumnTemplate>
 
-        </ListView>
+            </controls:FlowListView>
+
+        </StackLayout>
 
     </ContentPage.Content>
 

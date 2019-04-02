@@ -12,7 +12,7 @@ namespace slimWallet
             BindingContext = new CardsViewModel(Navigation);
         }
 
-        public void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if(BindingContext is CardsViewModel viewModel) viewModel.SelectCommand.Execute(e.Item);
         }

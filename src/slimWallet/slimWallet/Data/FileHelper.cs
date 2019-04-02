@@ -16,9 +16,7 @@ namespace slimWallet.Data
         private static string Images => Path.Combine(RootFolder, "Images");
         private static string Database => Path.Combine(RootFolder, "Database");
         public static string DatabasePath => Path.Combine(Database, "wallet.db3");
-
         public static string RandomImageFileName => $"{Guid.NewGuid()}.jpg";
-
         public static string ToAbsolutePath(this string fileName) => Path.Combine(Images, fileName);
     }
 }
