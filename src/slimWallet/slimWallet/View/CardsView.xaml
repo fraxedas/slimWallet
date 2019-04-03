@@ -12,7 +12,7 @@
 
         <ToolbarItem Icon="add.png"
                      Command="{Binding AddCommand}" />
-
+        
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
