@@ -11,5 +11,10 @@ namespace slimWallet.View
             InitializeComponent();
             BindingContext = new AddViewModel(Navigation);
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

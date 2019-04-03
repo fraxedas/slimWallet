@@ -37,10 +37,22 @@
                     Text="{Binding Model.Selected.Name, Mode=TwoWay}" />
                 
                 <Image
-                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay, Converter={StaticResource ImageSource}}" />
+                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay, Converter={StaticResource ImageSource}}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding TapCommand}"
+                            CommandParameter="front" />
+                    </Image.GestureRecognizers>
+                 </Image>
 
                 <Image
-                    Source="{Binding Model.Selected.BackImage, Mode=OneWay, Converter={StaticResource ImageSource}" />
+                    Source="{Binding Model.Selected.BackImage, Mode=OneWay, Converter={StaticResource ImageSource}}" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding TapCommand}"
+                            CommandParameter="back" />
+                    </Image.GestureRecognizers>
+                </Image>
 
             </StackLayout>
 

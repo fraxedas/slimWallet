@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
-using Plugin.Media.Abstractions;
 using slimWallet.Contracts;
 using slimWallet.Data;
 

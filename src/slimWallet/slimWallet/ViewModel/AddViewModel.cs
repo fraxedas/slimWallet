@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System.Windows.Input;
 using Plugin.Media.Abstractions;
 using slimWallet.Model;
+using slimWallet.View;
 
 namespace slimWallet.ViewModel
 {
@@ -18,6 +19,8 @@ namespace slimWallet.ViewModel
         {
             Model = CardModel.Current;
         }
+
+        public ICommand TapCommand => new Command(async (x) => await OnTapped(x.ToString() == "front"));
 
         public ICommand FrontCommand => new Command(async () => await TakePhoto(true));
 
@@ -41,6 +44,13 @@ namespace slimWallet.ViewModel
                 _model = value;
                 RaisePropertyChanged();
             }
+        }
+
+        private async Task OnTapped(bool front)
+        {
+            var filename = front? Model.Selected.FrontImage : Model.Selected.BackImage;
+            CropModel.Current.OriginalImage = ImageSource.FromStream(() => Model.Read(filename));
+            await Navigation.PushAsync(new CropView());
         }
 
         public async Task TakePhoto(bool front)

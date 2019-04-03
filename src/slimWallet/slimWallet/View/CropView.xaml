@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:base="clr-namespace:slimWallet.Base"
+    x:Class="slimWallet.View.CropView"
+    xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView">
+    <ContentPage.Content>
+        <StackLayout>
+
+                <!--<StackLayout Orientation="Horizontal">
+                    <Stepper HorizontalOptions="FillAndExpand" Increment="10" Minimum="-50" Maximum="50" Value="{Binding XOffset}"/>
+                    <Stepper HorizontalOptions="FillAndExpand" Increment="10" Minimum="-50" Maximum="50" Value="{Binding YOffset}"/>
+                    <Stepper HorizontalOptions="FillAndExpand" Increment="0.5" Minimum="1" Maximum="4" Value="{Binding Zoom}"/>
+                </StackLayout>-->    
+            
+                <imgcrop:ImageCropView HeightRequest="300" WidthRequest="475" x:Name="cropView"
+                    ManualOffsetX="{Binding XOffset}" 
+                    ManualOffsetY="{Binding YOffset}" 
+                    ManualZoom="{Binding Zoom}"
+                    ImageRotation="{Binding Rotation}" 
+                    Source="{Binding Model.OriginalImage}"/>
+            
+                <StackLayout Orientation="Horizontal">
+                    <Button HorizontalOptions="FillAndExpand" x:Name="rotateButton" Text="Rotate" Command="{Binding RotateCommand}"/>
+                    <Button HorizontalOptions="FillAndExpand" x:Name="saveButton" Text="Save"/>
+                </StackLayout>
+            
+                <Image HorizontalOptions="Center" HeightRequest="300" WidthRequest="475" Aspect="AspectFit" 
+                       Source="{Binding Model.SavedImage}"/>
+                
+            </StackLayout>
+    </ContentPage.Content>
+</base:BaseView>
