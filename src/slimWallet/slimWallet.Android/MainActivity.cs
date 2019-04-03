@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Plugin.CurrentActivity;
+using Xamarin.Forms;
 
 namespace slimWallet.Droid
 {
@@ -19,7 +20,7 @@ namespace slimWallet.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            
+            FormsMaterial.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
 

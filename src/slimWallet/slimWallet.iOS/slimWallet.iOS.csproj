@@ -171,6 +171,9 @@
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Forms.Visual.Material">
+      <Version>3.6.0.264807</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.LiveReload">
       <Version>0.3.27</Version>
     </PackageReference>
