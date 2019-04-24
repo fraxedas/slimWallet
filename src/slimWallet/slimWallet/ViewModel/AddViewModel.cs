@@ -50,14 +50,16 @@ namespace slimWallet.ViewModel
             var action = await Navigation.NavigationStack.Last()
                 .DisplayActionSheet("Select source", "Cancel", null, "Take photo", "Select from gallery");
 
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-            {
-                throw new Exception(":( No camera available.");
-            }
+
 
             MediaFile file = null;
             if (action == "Take photo")
             {
+                if (!CrossMedia.Current.IsCameraAvailable)
+                {
+                    throw new Exception(":( No camera available.");
+                }
+
                 file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                 {
                     Directory = "slimWallet",
@@ -68,6 +70,10 @@ namespace slimWallet.ViewModel
             }
             else if (action == "Select from gallery")
             {
+                if (!CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    throw new Exception(":( No camera available.");
+                }
                 file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                 {
                     PhotoSize = PhotoSize.Medium
