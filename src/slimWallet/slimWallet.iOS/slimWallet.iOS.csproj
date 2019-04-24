@@ -174,9 +174,6 @@
     <PackageReference Include="Xamarin.Forms.Visual.Material">
       <Version>3.6.0.264807</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.LiveReload">
-      <Version>0.3.27</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

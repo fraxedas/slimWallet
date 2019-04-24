@@ -13,10 +13,6 @@ namespace slimWallet
     {
         public App()
         {
-            // Initialize Live Reload.
-#if DEBUG
-            LiveReload.Init();
-#endif
             InitializeComponent();
 
             try
