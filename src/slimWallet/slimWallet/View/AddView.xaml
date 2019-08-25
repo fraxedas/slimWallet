@@ -13,8 +13,12 @@
             Command="{Binding FrontCommand}" />
 
         <ToolbarItem
-            Icon="back.png"
-            Command="{Binding BackCommand}" />
+            Text="Predict"
+            Command="{Binding PredictCommand}" />
+
+        <ToolbarItem
+            Text="Verify"
+            Command="{Binding VerifyCommand}" />
 
         <ToolbarItem
             Icon="save.png"
@@ -22,7 +26,7 @@
 
         <ToolbarItem
             Icon="remove.png"
-            Command="{Binding RemoveCommand}"/>
+            Command="{Binding RemoveCommand}" />
 
     </ContentPage.ToolbarItems>
 
@@ -33,14 +37,20 @@
             <StackLayout Spacing="10">
 
                 <Entry
-                    Placeholder = "Card name"
+                    Placeholder="Document name"
                     Text="{Binding Model.Selected.Name, Mode=TwoWay}" />
-                
-                <Image
-                    Source="{Binding Model.Selected.FrontImage, Mode=OneWay, Converter={StaticResource ImageSource}}" />
+
+                <Label
+                    Text="{Binding Model.Selected.DocumentId, Mode=OneWay}" />
+
+                <Switch
+                    IsToggled="{Binding Model.Selected.PredictedBlurry, Mode=OneWay}" />
+
+                <Switch
+                    IsToggled="{Binding Model.Selected.ActualBlurry, Mode=OneWay}" />
 
                 <Image
-                    Source="{Binding Model.Selected.BackImage, Mode=OneWay, Converter={StaticResource ImageSource}" />
+                    Source="{Binding Model.Selected.Image, Mode=OneWay, Converter={StaticResource ImageSource}}" />
 
             </StackLayout>
 

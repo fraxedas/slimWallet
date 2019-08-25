@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System.Windows.Input;
 using Plugin.Media.Abstractions;
 using slimWallet.Model;
+using slimWallet.Data;
 
 namespace slimWallet.ViewModel
 {
@@ -19,16 +20,20 @@ namespace slimWallet.ViewModel
             Model = CardModel.Current;
         }
 
-        public ICommand FrontCommand => new Command(async () => await TakePhoto(true));
+        public ICommand FrontCommand => new Command(async () => await TakePhoto());
 
-        public ICommand BackCommand => new Command(async () => await TakePhoto(false));
+        public ICommand PredictCommand => new Command(async () => await Model.Predict());
 
-        public ICommand RemoveCommand => new Command(async () => {
+        public ICommand VerifyCommand => new Command(async () => await Model.Verify());
+
+        public ICommand RemoveCommand => new Command(async () =>
+        {
             await Model.RemoveAsync(Model.Selected);
             await Navigation.PopAsync();
         });
 
-        public ICommand SaveCommand => new Command(async () => {
+        public ICommand SaveCommand => new Command(async () =>
+        {
             await Model.SaveAsync(Model.Selected);
             await Navigation.PopAsync();
         });
@@ -43,7 +48,7 @@ namespace slimWallet.ViewModel
             }
         }
 
-        public async Task TakePhoto(bool front)
+        public async Task TakePhoto()
         {
             await CrossMedia.Current.Initialize();
 
@@ -83,7 +88,8 @@ namespace slimWallet.ViewModel
             if (file == null)
                 return;
 
-            await _model.SaveFileAsync(Model.Selected, file.GetStreamWithImageRotatedForExternalStorage(), front);
+            await _model.SaveFileAsync(Model.Selected, file.GetStreamWithImageRotatedForExternalStorage());
         }
+
     }
 }
