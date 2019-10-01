@@ -5,8 +5,10 @@ namespace slimWallet.Contracts
 {
     public class Card : ObservableObject
     {
-        private string _backImage;
-        private string _frontImage;
+        private string _image;
+        private string _documentId;
+        private bool _predictedBlurry;
+        private bool _actualBlurry;
         private string _name;
         private string _thumbnail;
 
@@ -23,22 +25,12 @@ namespace slimWallet.Contracts
             }
         }
 
-        public string FrontImage
+        public string Image
         {
-            get => _frontImage;
+            get => _image;
             set
             {
-                _frontImage = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public string BackImage
-        {
-            get => _backImage;
-            set
-            {
-                _backImage = value;
+                _image = value;
                 RaisePropertyChanged();
             }
         }
@@ -49,6 +41,36 @@ namespace slimWallet.Contracts
             set
             {
                 _thumbnail = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string DocumentId
+        {
+            get => _documentId;
+            set
+            {
+                _documentId = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool PredictedBlurry
+        {
+            get => _predictedBlurry;
+            set
+            {
+                _predictedBlurry = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public bool ActualBlurry
+        {
+            get => _actualBlurry;
+            set
+            {
+                _actualBlurry = value;
                 RaisePropertyChanged();
             }
         }
